@@ -25,7 +25,8 @@ async function sendTx() {
             sell_tokens: tokensAddressesSell.toString(),
             sell_amounts: tokensSellAmounts.toString(),
             taker_address: account.address,
-            gasless: false
+            gasless: false,
+            skip_validation: true
         }
     })).data
     console.log(quote)
