@@ -23,7 +23,7 @@ async function sendTx() {
             buy_tokens: tokensAddressBuy.toString(),
             sell_tokens: tokensAddressesSell.toString(),
             sell_amounts: tokensSellAmounts.toString(),
-            taker_address: account.address,
+            taker_address: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
             gasless: false,
             skip_validation: true
         }

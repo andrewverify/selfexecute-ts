@@ -18,15 +18,15 @@ const provider = new ethers_1.ethers.JsonRpcProvider("https://mainnet.base.org")
 // Getting quote and submitting it onchain
 async function sendTx() {
     // Init you wallet
-    let account = new ethers_1.ethers.Wallet(privateKey);
     // Get quote
     let quote = (await axios_1.default.get(`https://api.bebop.xyz/pmm/${chain.name}/v3/quote`, {
         params: {
             buy_tokens: tokensAddressBuy.toString(),
             sell_tokens: tokensAddressesSell.toString(),
             sell_amounts: tokensSellAmounts.toString(),
-            taker_address: account.address,
-            gasless: false
+            taker_address: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+            gasless: false,
+            skip_validation: true
         }
     })).data;
     console.log(quote);
@@ -34,7 +34,5 @@ async function sendTx() {
         return;
     }
     // Send the transaction
-    let txHash = await account.connect(provider).sendTransaction(quote.tx);
-    console.log(txHash);
 }
 sendTx();
