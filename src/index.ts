@@ -16,7 +16,6 @@ const provider = new ethers.JsonRpcProvider("https://mainnet.base.org")
 async function sendTx() {
 
     // Init you wallet
-    let account = new ethers.Wallet(privateKey)
 
     // Get quote
     let quote = (await axios.get(`https://api.bebop.xyz/pmm/${chain.name}/v3/quote`, {
@@ -35,8 +34,6 @@ async function sendTx() {
     }
 
     // Send the transaction
-    let txHash = await account.connect(provider).sendTransaction(quote.tx)
-    console.log(txHash)
 }
 
 sendTx()
